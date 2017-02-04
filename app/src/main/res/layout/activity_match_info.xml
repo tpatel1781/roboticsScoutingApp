@@ -29,7 +29,8 @@
             app:met_primaryColor="@color/white"
             app:met_underlineColor="@color/white"
             app:met_textColor="@color/white"
-            app:met_textColorHint="@color/gray"/>
+            app:met_textColorHint="@color/gray"
+            android:inputType="number"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="300dp"
@@ -41,7 +42,8 @@
             app:met_primaryColor="@color/white"
             app:met_underlineColor="@color/white"
             app:met_textColor="@color/white"
-            app:met_textColorHint="@color/gray" />
+            app:met_textColorHint="@color/gray"
+            android:inputType="number"/>
 
         <Button
             android:layout_width="250dp"
@@ -59,7 +61,8 @@
             android:src="@drawable/logo"
             android:layout_gravity="center_horizontal"
             android:paddingTop="75dp"
-            android:id="@+id/logo_image_view" />
+            android:id="@+id/logo_image_view"
+            android:alpha="0.05"/>
 
     </LinearLayout>
 

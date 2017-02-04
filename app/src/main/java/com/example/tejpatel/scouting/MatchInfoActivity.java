@@ -23,10 +23,6 @@ public class MatchInfoActivity extends AppCompatActivity {
 
         context = this;
 
-        ImageView logoImageView = (ImageView) findViewById(R.id.logo_image_view);
-        // Set logo opacity to 5%
-        logoImageView.setAlpha(0.05f);
-
         final MaterialEditText matchNumberEditText = (MaterialEditText) findViewById(R.id.match_number_edit_text);
         final MaterialEditText robotNumberEditText = (MaterialEditText) findViewById(R.id.robot_number_edit_text);
         Button startMatchButton = (Button) findViewById(R.id.start_match_button);
