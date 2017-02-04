@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_match_data"
+    android:background="@color/colorAccent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.tejpatel.scouting.MatchDataActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/checkbox_linear_layout">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/placed_gear_checkbox"
+            android:text="Placed Gear"
+            android:paddingEnd="64dp"
+            android:buttonTint="@color/white"
+            android:textColor="@color/white"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/high_goal_checkbox"
+            android:text="High Goal"
+            android:paddingEnd="64dp"
+            android:buttonTint="@color/white"
+            android:textColor="@color/white"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/low_goal_checkbox"
+            android:text="Low Goal"
+            android:buttonTint="@color/white"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/whole_list_linear_layout"
+        android:orientation="horizontal"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/checkbox_linear_layout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/left_list_linear_layout"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:padding="4dp"
+            android:layout_marginEnd="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/gears_linear_layout"
+                android:background="@color/gray"
+                android:padding="4dp"
+                android:elevation="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="36sp"
+                    android:textColor="@color/lightGray"
+                    android:alpha="0.75"
+                    android:padding="8dp"
+                    android:layout_marginStart="12dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gears"
+                    android:textSize="20sp"
+                    android:textColor="@color/lightGray"
+                    android:alpha="0.5"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/gears_button_linear_layout"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="36dp">
+
+                    <Button
+                        android:layout_height="24dp"
+                        android:layout_width="24dp"
+                        android:background="@drawable/ic_add_circle"
+                        android:alpha="0.5"/>
+
+                    <Button
+                        android:layout_height="24dp"
+                        android:layout_width="24dp"
+                        android:background="@drawable/ic_remove_circle"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:alpha="0.5"/>
+
+                    <Button
+                        android:layout_height="24dp"
+                        android:layout_width="24dp"
+                        android:background="@drawable/ic_undo"
+                        android:alpha="0.5"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/low_goal_linear_layout"
+                android:background="@color/gray"
+                android:padding="4dp"
+                android:elevation="20dp"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="36sp"
+                    android:textColor="@color/lightGray"
+                    android:alpha="0.75"
+                    android:padding="8dp"
+                    android:layout_marginStart="12dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Low Goals"
+                    android:textSize="16sp"
+                    android:textColor="@color/lightGray"
+                    android:alpha="0.5"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/low_goal_button_linear_layout"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp">
+
+                    <Button
+                        android:layout_height="24dp"
+                        android:layout_width="24dp"
+                        android:background="@drawable/ic_add_circle"
+                        android:alpha="0.5"/>
+
+                    <Button
+                        android:layout_height="24dp"
+                        android:layout_width="24dp"
+                        android:background="@drawable/ic_remove_circle"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:alpha="0.5"/>
+
+                    <Button
+                        android:layout_height="24dp"
+                        android:layout_width="24dp"
+                        android:background="@drawable/ic_undo"
+                        android:alpha="0.5"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/right_list_linear_layout"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:padding="4dp"
+            android:layout_marginStart="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/gray"
+                android:padding="4dp"
+                android:elevation="20dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textSize="36sp"
+                    android:textColor="@color/lightGray"
+                    android:alpha="0.75"
+                    android:padding="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Shots"
+                    android:textSize="20sp"
+                    android:textColor="@color/lightGray"
+                    android:alpha="0.5"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/shots_button_linear_layout"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp">
+
+                    <Button
+                        android:layout_height="24dp"
+                        android:layout_width="24dp"
+                        android:background="@drawable/ic_add_circle"
+                        android:alpha="0.5"/>
+
+                    <Button
+                        android:layout_height="24dp"
+                        android:layout_width="24dp"
+                        android:background="@drawable/ic_remove_circle"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:alpha="0.5"/>
+
+                    <Button
+                        android:layout_height="24dp"
+                        android:layout_width="24dp"
+                        android:background="@drawable/ic_undo"
+                        android:alpha="0.5"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/climbed_linear_layout"
+                android:background="@color/gray"
+                android:padding="4dp"
+                android:elevation="20dp"
+                android:layout_marginTop="12dp">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/climbed_checkbox"
+                    android:buttonTint="@color/lightGray"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Climbed"
+                    android:textSize="36sp"
+                    android:textColor="@color/lightGray"
+                    android:alpha="0.75"
+                    android:padding="8dp"
+                    android:layout_marginStart="4dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>
