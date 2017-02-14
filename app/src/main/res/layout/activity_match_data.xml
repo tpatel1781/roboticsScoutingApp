@@ -11,12 +11,53 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.tejpatel.scouting.MatchDataActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/field_image_linear_layout" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/field_image" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/autonomous_position_button_linear_layout"
+            android:layout_centerHorizontal="true" >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Left" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Center"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Right" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_centerHorizontal="true"
-        android:id="@+id/checkbox_linear_layout">
+        android:id="@+id/checkbox_linear_layout"
+        android:layout_below="@id/field_image_linear_layout" >
 
         <CheckBox
             android:layout_width="wrap_content"
