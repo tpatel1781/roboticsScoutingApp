@@ -11,6 +11,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.tejpatel.scouting.MatchDataActivity">
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -28,24 +36,40 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/autonomous_position_button_linear_layout"
-                    android:layout_centerHorizontal="true" >
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerInParent="true"
+                    android:background="@color/colorPrimaryDark"
+                    android:padding="8dp"
+                    android:elevation="20dp">
 
-                    <Button
+                    <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Left" />
+                        android:id="@+id/left_position_button"
+                        android:text="Left"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
+                        android:buttonTint="@color/white"/>
 
-                    <Button
+                    <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/center_position_button"
                         android:text="Center"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginEnd="24dp"/>
+                        android:buttonTint="@color/white"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
+                        android:layout_marginStart="48dp"
+                        android:layout_marginEnd="48dp" />
 
-                    <Button
+                    <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Right" />
+                        android:id="@+id/right_position_button"
+                        android:text="Right"
+                        android:textSize="24sp"
+                        android:buttonTint="@color/white"
+                        android:textColor="@color/white"/>
 
                 </LinearLayout>
 
@@ -57,7 +81,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:id="@+id/checkbox_linear_layout"
-                android:layout_below="@id/field_image_linear_layout" >
+                android:layout_below="@id/field_image_linear_layout"
+                android:layout_marginTop="8dp">
 
                 <CheckBox
                     android:layout_width="wrap_content"
@@ -93,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/whole_list_linear_layout"
                 android:orientation="vertical"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:layout_below="@+id/checkbox_linear_layout"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true">
@@ -312,7 +337,8 @@
                 android:elevation="20dp"
                 android:textColor="@color/white"
                 android:maxHeight="70dp"
-                android:scrollIndicators="right"/>
+                android:scrollIndicators="right"
+                android:id="@+id/notes_edit_text" />
 
             <Button
                 android:layout_width="fill_parent"
@@ -321,8 +347,13 @@
                 android:text="End Match"
                 android:backgroundTint="@color/colorPrimaryDark"
                 android:textColor="@color/white"
-                android:layout_alignParentBottom="true"
+                android:layout_below="@id/notes_edit_text"
+                android:layout_marginTop="16dp"
                 android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
     </RelativeLayout>
 
