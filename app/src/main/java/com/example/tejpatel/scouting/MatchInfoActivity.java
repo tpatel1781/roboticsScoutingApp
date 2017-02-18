@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -31,13 +32,18 @@ public class MatchInfoActivity extends AppCompatActivity {
         startMatchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // matchNumber.equals(matchNumberEditText.getText().toString());
-                // robotNumber.equals(robotNumberEditText.getText().toString());
+                matchNumber = matchNumberEditText.getText().toString();
+                robotNumber = robotNumberEditText.getText().toString();
 
                 Intent myIntent = new Intent(context, MatchDataActivity.class);
+                myIntent.putExtra("MATCH_NUMBER", matchNumber);
+                myIntent.putExtra("ROBOT_NUMBER", robotNumber);
+
+                Log.i("matchNumber", matchNumber);
+                Log.i("robotNumber", robotNumber);
+
                 startActivity(myIntent);
             }
         });
-
     }
 }

@@ -1,14 +1,17 @@
 package com.example.tejpatel.scouting;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.FileOutputStream;
 
@@ -24,10 +27,20 @@ public class MatchDataActivity extends AppCompatActivity {
     String notes;
     String startPosition = "Never entered";
 
+    // 0 means not checked, 1 means checked
+    int placedGear = 0;
+    int highGoal = 0;
+    int lowGoal = 0;
+
+    String matchNumber;
+    String robotNumber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_data);
+
+        context = this;
 
         final TextView numGearsTextView = (TextView) findViewById(R.id.num_gears_text_view);
         numGearsTextView.setText(Integer.toString(numGears));
@@ -54,7 +67,11 @@ public class MatchDataActivity extends AppCompatActivity {
         RadioButton centerPositionRadioButton = (RadioButton) findViewById(R.id.center_position_button);
         RadioButton rightPositionRadioButton = (RadioButton) findViewById(R.id.right_position_button);
 
-        // OnClickListeners for adding, removing, and undoing gears
+        CheckBox placedGearCheckbox = (CheckBox) findViewById(R.id.placed_gear_checkbox);
+        CheckBox highGoalCheckbox = (CheckBox) findViewById(R.id.high_goal_checkbox);
+        CheckBox lowGoalCheckBox = (CheckBox) findViewById(R.id.low_goal_checkbox);
+
+        // OnClickListeners for adding and removing
         addGearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,11 +82,15 @@ public class MatchDataActivity extends AppCompatActivity {
         removeGearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numGearsTextView.setText(Integer.toString(--numGears));
+                if (numGears == 0) {
+                    numGearsTextView.setText(Integer.toString(numGears));
+                } else {
+                    numGearsTextView.setText(Integer.toString(--numGears));
+                }
             }
         });
 
-        // OnClickListeners for adding, removing, and undoing low goals
+        // OnClickListeners for adding and removing
         addLowGoalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,11 +101,15 @@ public class MatchDataActivity extends AppCompatActivity {
         removeLowGoalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numLowGoalsTextView.setText(Integer.toString(--numLowGoals));
+                if (numLowGoals == 0) {
+                    numLowGoalsTextView.setText(Integer.toString(numLowGoals));
+                } else {
+                    numLowGoalsTextView.setText(Integer.toString(--numLowGoals));
+                }
             }
         });
 
-        // OnClickListeners for adding, removing, and undoing high goals
+        // OnClickListeners for adding and removing high goals
         addHighGoalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,15 +120,23 @@ public class MatchDataActivity extends AppCompatActivity {
         removeHighGoalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numHighGoalsTextView.setText(Integer.toString(--numHighGoals));
+                if (numHighGoals == 0) {
+                    numHighGoalsTextView.setText(Integer.toString(numHighGoals));
+                } else {
+                    numHighGoalsTextView.setText(Integer.toString(--numHighGoals));
+                }
             }
         });
 
+        // OnClickListener for end match button
+        // Passes data to generateString method
         endMatchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 notes = notesEditText.getText().toString();
-                generateString(startPosition, numGears, numLowGoals, numHighGoals, notes);
+                generateString(startPosition, placedGear, highGoal, lowGoal, numGears, numLowGoals, numHighGoals, notes);
+
+                Toast.makeText(context, "Match finished, data recorded", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -128,12 +161,37 @@ public class MatchDataActivity extends AppCompatActivity {
                 startPosition = "RIGHT";
             }
         });
+
+
+        placedGearCheckbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                placedGear = 1;
+            }
+        });
+
+        highGoalCheckbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                highGoal = 1;
+            }
+        });
+
+        lowGoalCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lowGoal = 1;
+            }
+        });
+
+        // TODO Add value for climbed checkbox in CSV String
+
     }
 
     // Generates comma separated string with number of gears, low goals, and high goals
     // The string is then passed to the CreateCSVFile method
-    public void generateString(String position, int numGears, int numLowGoals, int numHighGoals, String matchNotes) {
-        data = startPosition + ", " + Integer.toString(numGears) + ", " + Integer.toString(numLowGoals) + ", " + Integer.toString(numHighGoals) + ", " + matchNotes;
+    public void generateString(String startPosition, int placedGear, int highGoal, int lowGoal, int numGears, int numLowGoals, int numHighGoals, String matchNotes) {
+        data = startPosition + ", " + Integer.toString(placedGear) + ", " + Integer.toString(highGoal) + ", " + Integer.toString(lowGoal) + ", " + Integer.toString(numGears) + ", " + Integer.toString(numLowGoals) + ", " + Integer.toString(numHighGoals) + ", " + matchNotes;
         Log.i("csvData", data);
         CreateCSVFile(context, fileName, data);
     }
