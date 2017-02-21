@@ -17,9 +17,7 @@ import java.io.FileOutputStream;
 
 public class MatchDataActivity extends AppCompatActivity {
     private Context context;
-    String fileName = "scoutingData";
     String data;
-    FileOutputStream outputStream;
 
     int numGears = 0;
     int numLowGoals = 0;
@@ -166,7 +164,11 @@ public class MatchDataActivity extends AppCompatActivity {
         placedGearCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                placedGear = 1;
+                if(placedGear == 1) {
+                    placedGear = 0;
+                } else {
+                    placedGear = 1;
+                }
             }
         });
 
@@ -185,26 +187,20 @@ public class MatchDataActivity extends AppCompatActivity {
         });
 
         // TODO Add value for climbed checkbox in CSV String
-
+        // TODO If checkbox is pressed again, value should change back to 0
     }
 
     // Generates comma separated string with number of gears, low goals, and high goals
     // The string is then passed to the CreateCSVFile method
     public void generateString(String startPosition, int placedGear, int highGoal, int lowGoal, int numGears, int numLowGoals, int numHighGoals, String matchNotes) {
-        data = startPosition + ", " + Integer.toString(placedGear) + ", " + Integer.toString(highGoal) + ", " + Integer.toString(lowGoal) + ", " + Integer.toString(numGears) + ", " + Integer.toString(numLowGoals) + ", " + Integer.toString(numHighGoals) + ", " + matchNotes;
+        data = startPosition + ", " + Integer.toString(placedGear) + ", " + Integer.toString(highGoal) + ", " + Integer.toString(lowGoal) + ", " + Integer.toString(numGears) + ", " + Integer.toString(numLowGoals) + ", " + Integer.toString(numHighGoals) + ", " + matchNotes + "\n";
         Log.i("csvData", data);
-        CreateCSVFile(context, fileName, data);
+
+        Intent daIntent = new Intent(context, BarcodeActivity.class);
+        daIntent.putExtra("DATA", data);
+        startActivity(daIntent);
     }
 
-    // Creates CSV file and stores comma separated string in it
-    public void CreateCSVFile(Context context, String csvFileName, String csvData) {
-        try {
-            outputStream = openFileOutput(csvFileName, Context.MODE_PRIVATE);
-            outputStream.write(csvData.getBytes());
-            outputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 
 }
