@@ -19,16 +19,17 @@ public class MatchDataActivity extends AppCompatActivity {
     private Context context;
     String data;
 
-    int numGears = 0;
-    int numLowGoals = 0;
-    int numHighGoals = 0;
     String notes;
     String startPosition = "Never entered";
 
     // 0 means not checked, 1 means checked
+    int numGears = 0;
+    int numLowGoals = 0;
+    int numHighGoals = 0;
     int placedGear = 0;
     int highGoal = 0;
     int lowGoal = 0;
+    int climbed = 0;
 
     String matchNumber;
     String robotNumber;
@@ -68,6 +69,8 @@ public class MatchDataActivity extends AppCompatActivity {
         CheckBox placedGearCheckbox = (CheckBox) findViewById(R.id.placed_gear_checkbox);
         CheckBox highGoalCheckbox = (CheckBox) findViewById(R.id.high_goal_checkbox);
         CheckBox lowGoalCheckBox = (CheckBox) findViewById(R.id.low_goal_checkbox);
+
+        CheckBox climbedCheckbox = (CheckBox) findViewById(R.id.climbed_checkbox);
 
         // OnClickListeners for adding and removing
         addGearButton.setOnClickListener(new View.OnClickListener() {
@@ -132,7 +135,7 @@ public class MatchDataActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 notes = notesEditText.getText().toString();
-                generateString(startPosition, placedGear, highGoal, lowGoal, numGears, numLowGoals, numHighGoals, notes);
+                generateString(startPosition, placedGear, highGoal, lowGoal, numGears, numLowGoals, numHighGoals, climbed, notes);
 
                 Toast.makeText(context, "Match finished, data recorded", Toast.LENGTH_SHORT).show();
             }
@@ -175,25 +178,43 @@ public class MatchDataActivity extends AppCompatActivity {
         highGoalCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                highGoal = 1;
+                if(highGoal == 1) {
+                    highGoal = 0;
+                } else {
+                    highGoal = 1;
+                }
             }
         });
 
         lowGoalCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lowGoal = 1;
+                if(lowGoal == 1) {
+                    lowGoal = 0;
+                } else {
+                    lowGoal = 1;
+                }
             }
         });
 
-        // TODO Add value for climbed checkbox in CSV String
+        climbedCheckbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(climbed == 1) {
+                    climbed = 0;
+                } else {
+                    climbed = 1;
+                }
+            }
+        });
+
         // TODO If checkbox is pressed again, value should change back to 0
     }
 
     // Generates comma separated string with number of gears, low goals, and high goals
     // The string is then passed to the CreateCSVFile method
-    public void generateString(String startPosition, int placedGear, int highGoal, int lowGoal, int numGears, int numLowGoals, int numHighGoals, String matchNotes) {
-        data = startPosition + ", " + Integer.toString(placedGear) + ", " + Integer.toString(highGoal) + ", " + Integer.toString(lowGoal) + ", " + Integer.toString(numGears) + ", " + Integer.toString(numLowGoals) + ", " + Integer.toString(numHighGoals) + ", " + matchNotes + "\n";
+    public void generateString(String startPosition, int placedGear, int highGoal, int lowGoal, int numGears, int numLowGoals, int numHighGoals, int climbed, String matchNotes) {
+        data = startPosition + ", " + Integer.toString(placedGear) + ", " + Integer.toString(highGoal) + ", " + Integer.toString(lowGoal) + ", " + Integer.toString(numGears) + ", " + Integer.toString(numLowGoals) + ", " + Integer.toString(numHighGoals) + ", " + Integer.toString(climbed) + ", " + matchNotes;
         Log.i("csvData", data);
 
         Intent daIntent = new Intent(context, BarcodeActivity.class);

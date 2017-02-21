@@ -17,6 +17,5 @@
         android:id="@+id/QR_code_image_view"
         android:layout_centerInParent="true"/>
 
-    
 
 </RelativeLayout>

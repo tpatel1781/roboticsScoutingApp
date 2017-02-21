@@ -39,7 +39,7 @@ public class BarcodeActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        Toast.makeText(context, "")
+        Toast.makeText(context, "Bring QR Code to scouting laptop to import data", Toast.LENGTH_LONG).show();
 
     }
 
