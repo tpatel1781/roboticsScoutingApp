@@ -27,7 +27,6 @@ public class BarcodeActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String data = bundle.getString("DATA");
 
-        Thread thread ;
         Bitmap bitmap ;
 
         ImageView QRCodeImageView = (ImageView) findViewById(R.id.QR_code_image_view);
