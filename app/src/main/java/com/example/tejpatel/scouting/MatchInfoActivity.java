@@ -15,7 +15,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 public class MatchInfoActivity extends AppCompatActivity {
     private Context context;
     public String matchNumber;
-    public String robotNumber;
+    public String teamNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +33,16 @@ public class MatchInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 matchNumber = matchNumberEditText.getText().toString();
-                robotNumber = robotNumberEditText.getText().toString();
+                teamNumber = robotNumberEditText.getText().toString();
 
                 Intent myIntent = new Intent(context, MatchDataActivity.class);
-                myIntent.putExtra("MATCH_NUMBER", matchNumber);
-                myIntent.putExtra("ROBOT_NUMBER", robotNumber);
+                Bundle extras = new Bundle();
+                extras.putString("MATCH_NUMBER", matchNumber);
+                extras.putString("TEAM_NUMBER", teamNumber);
+                myIntent.putExtras(extras);
 
                 Log.i("matchNumber", matchNumber);
-                Log.i("robotNumber", robotNumber);
+                Log.i("robotNumber", teamNumber);
 
                 startActivity(myIntent);
             }

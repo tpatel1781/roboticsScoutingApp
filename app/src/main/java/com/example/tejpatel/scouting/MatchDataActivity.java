@@ -2,6 +2,7 @@ package com.example.tejpatel.scouting;
 
 import android.content.Context;
 import android.content.Intent;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,8 +32,11 @@ public class MatchDataActivity extends AppCompatActivity {
     int lowGoal = 0;
     int climbed = 0;
 
+    // 0 = blue, red = 1, not set = -1
+    int alliance = -1;
+
     String matchNumber;
-    String robotNumber;
+    String teamNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,14 @@ public class MatchDataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_match_data);
 
         context = this;
+
+        Intent receiveIntent = getIntent();
+        Bundle extras = receiveIntent.getExtras();
+        matchNumber = extras.getString("MATCH_NUMBER");
+        teamNumber = extras.getString("TEAM_NUMBER");
+
+        Log.i("received Match Number", matchNumber);
+        Log.i("received Team Number", teamNumber);
 
         final TextView numGearsTextView = (TextView) findViewById(R.id.num_gears_text_view);
         numGearsTextView.setText(Integer.toString(numGears));
@@ -69,6 +81,9 @@ public class MatchDataActivity extends AppCompatActivity {
         CheckBox placedGearCheckbox = (CheckBox) findViewById(R.id.placed_gear_checkbox);
         CheckBox highGoalCheckbox = (CheckBox) findViewById(R.id.high_goal_checkbox);
         CheckBox lowGoalCheckBox = (CheckBox) findViewById(R.id.low_goal_checkbox);
+
+        RadioButton blueAllianceRadioButton = (RadioButton) findViewById(R.id.blue_alliance_button);
+        RadioButton redAllianceRadioButton = (RadioButton) findViewById(R.id.red_alliance_button);
 
         CheckBox climbedCheckbox = (CheckBox) findViewById(R.id.climbed_checkbox);
 
@@ -135,7 +150,7 @@ public class MatchDataActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 notes = notesEditText.getText().toString();
-                generateString(startPosition, placedGear, highGoal, lowGoal, numGears, numLowGoals, numHighGoals, climbed, notes);
+                generateString(teamNumber, matchNumber, alliance, startPosition, placedGear, highGoal, lowGoal, numGears, numLowGoals, numHighGoals, climbed, notes);
 
                 Toast.makeText(context, "Match finished, data recorded", Toast.LENGTH_SHORT).show();
             }
@@ -163,7 +178,20 @@ public class MatchDataActivity extends AppCompatActivity {
             }
         });
 
+        blueAllianceRadioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alliance = 0;
+            }
+        });
+        redAllianceRadioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alliance = 1;
+            }
+        });
 
+        // If Checkboxes are unclicked, their value goes back to 0
         placedGearCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -174,7 +202,6 @@ public class MatchDataActivity extends AppCompatActivity {
                 }
             }
         });
-
         highGoalCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -185,7 +212,6 @@ public class MatchDataActivity extends AppCompatActivity {
                 }
             }
         });
-
         lowGoalCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -196,7 +222,6 @@ public class MatchDataActivity extends AppCompatActivity {
                 }
             }
         });
-
         climbedCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -207,14 +232,12 @@ public class MatchDataActivity extends AppCompatActivity {
                 }
             }
         });
-
-        // TODO If checkbox is pressed again, value should change back to 0
     }
 
     // Generates comma separated string with number of gears, low goals, and high goals
     // The string is then passed to the CreateCSVFile method
-    public void generateString(String startPosition, int placedGear, int highGoal, int lowGoal, int numGears, int numLowGoals, int numHighGoals, int climbed, String matchNotes) {
-        data = startPosition + ", " + Integer.toString(placedGear) + ", " + Integer.toString(highGoal) + ", " + Integer.toString(lowGoal) + ", " + Integer.toString(numGears) + ", " + Integer.toString(numLowGoals) + ", " + Integer.toString(numHighGoals) + ", " + Integer.toString(climbed) + ", " + matchNotes;
+    public void generateString(String teamNumber, String matchNumber, int alliance, String startPosition, int placedGear, int highGoal, int lowGoal, int numGears, int numLowGoals, int numHighGoals, int climbed, String matchNotes) {
+        data = teamNumber + ", " + matchNumber + ", " + alliance + ", " + startPosition + ", " + Integer.toString(placedGear) + ", " + Integer.toString(highGoal) + ", " + Integer.toString(lowGoal) + ", " + Integer.toString(numGears) + ", " + Integer.toString(numLowGoals) + ", " + Integer.toString(numHighGoals) + ", " + Integer.toString(climbed) + ", " + matchNotes;
         Log.i("csvData", data);
 
         Intent daIntent = new Intent(context, BarcodeActivity.class);

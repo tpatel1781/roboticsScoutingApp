@@ -35,6 +35,34 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:id="@+id/alliance_button_linear_layout"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:layout_marginEnd="128dp"
+                    android:layout_marginTop="16dp">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/blue_alliance_button"
+                        android:text="Blue"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/red_alliance_button"
+                        android:text="Red"
+                        android:buttonTint="@color/white"
+                        android:textColor="@color/white" />
+
+                </RadioGroup>
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:id="@+id/autonomous_position_button_linear_layout"
                     android:layout_weight="1"
                     android:padding="8dp"
