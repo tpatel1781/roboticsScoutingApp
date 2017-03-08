@@ -25,110 +25,17 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/radio_checkbox_linear_layout"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true">
+                android:layout_height="wrap_content">
 
-                <RadioGroup
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:id="@+id/alliance_button_linear_layout"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:layout_marginEnd="128dp"
-                    android:layout_marginTop="16dp">
-
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/blue_alliance_button"
-                        android:text="Blue"
-                        android:textColor="@color/white"
-                        android:buttonTint="@color/white"/>
-
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/red_alliance_button"
-                        android:text="Red"
-                        android:buttonTint="@color/white"
-                        android:textColor="@color/white" />
-
-                </RadioGroup>
-
-                <RadioGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:id="@+id/autonomous_position_button_linear_layout"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:layout_marginEnd="128dp">
-
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/left_position_button"
-                        android:text="Left"
-                        android:textColor="@color/white"
-                        android:buttonTint="@color/white"/>
-
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/center_position_button"
-                        android:text="Center"
-                        android:buttonTint="@color/white"
-                        android:textColor="@color/white" />
-
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/right_position_button"
-                        android:text="Right"
-                        android:buttonTint="@color/white"
-                        android:textColor="@color/white"/>
-
-                </RadioGroup>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:id="@+id/checkbox_linear_layout"
-                    android:layout_marginTop="8dp">
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/placed_gear_checkbox"
-                        android:text="Placed Gear"
-                        android:buttonTint="@color/white"
-                        android:textColor="@color/white"/>
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/high_goal_checkbox"
-                        android:text="High Goal"
-                        android:buttonTint="@color/white"
-                        android:textColor="@color/white"/>
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/low_goal_checkbox"
-                        android:text="Low Goal"
-                        android:buttonTint="@color/white"
-                        android:textColor="@color/white"/>
-
-                </LinearLayout>
+                    android:text="Autonomous"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"/>
 
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -140,13 +47,21 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tele-op"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="8dp"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/gears_linear_layout"
                     android:background="@color/gray"
                     android:padding="4dp"
-                    android:elevation="20dp"
+                    android:elevation="4dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -173,19 +88,19 @@
                         android:id="@+id/gears_button_linear_layout"
                         android:orientation="horizontal"
                         android:gravity="end"
-                        android:layout_marginTop="18dp"
+                        android:layout_marginTop="9dp"
                         android:paddingEnd="24dp">
 
                         <Button
-                            android:layout_height="36dp"
-                            android:layout_width="36dp"
+                            android:layout_height="48dp"
+                            android:layout_width="48dp"
                             android:background="@drawable/ic_add_circle"
                             android:alpha="0.5"
                             android:id="@+id/add_gear_button"/>
 
                         <Button
-                            android:layout_height="36dp"
-                            android:layout_width="36dp"
+                            android:layout_height="48dp"
+                            android:layout_width="48dp"
                             android:background="@drawable/ic_remove_circle"
                             android:layout_marginStart="48dp"
                             android:layout_marginEnd="16dp"
@@ -202,7 +117,7 @@
                     android:id="@+id/low_goal_linear_layout"
                     android:background="@color/gray"
                     android:padding="4dp"
-                    android:elevation="20dp"
+                    android:elevation="4dp"
                     android:layout_marginTop="12dp">
 
                     <TextView
@@ -230,19 +145,19 @@
                         android:id="@+id/low_goal_button_linear_layout"
                         android:orientation="horizontal"
                         android:gravity="end"
-                        android:layout_marginTop="18dp"
+                        android:layout_marginTop="9dp"
                         android:layout_marginEnd="24dp">
 
                         <Button
-                            android:layout_height="36dp"
-                            android:layout_width="36dp"
+                            android:layout_height="48dp"
+                            android:layout_width="48dp"
                             android:id="@+id/add_low_goal_button"
                             android:background="@drawable/ic_add_circle"
                             android:alpha="0.5"/>
 
                         <Button
-                            android:layout_height="36dp"
-                            android:layout_width="36dp"
+                            android:layout_height="48dp"
+                            android:layout_width="48dp"
                             android:id="@+id/remove_low_goal_button"
                             android:background="@drawable/ic_remove_circle"
                             android:layout_marginStart="48dp"
@@ -259,7 +174,7 @@
                     android:id="@+id/high_goal_linear_layout"
                     android:background="@color/gray"
                     android:padding="4dp"
-                    android:elevation="20dp"
+                    android:elevation="4dp"
                     android:layout_marginTop="12dp">
 
                     <TextView
@@ -286,19 +201,19 @@
                         android:id="@+id/shots_button_linear_layout"
                         android:orientation="horizontal"
                         android:gravity="end"
-                        android:layout_marginTop="18dp"
+                        android:layout_marginTop="9dp"
                         android:layout_marginEnd="24dp">
 
                         <Button
-                            android:layout_height="36dp"
-                            android:layout_width="36dp"
+                            android:layout_height="48dp"
+                            android:layout_width="48dp"
                             android:background="@drawable/ic_add_circle"
                             android:alpha="0.5"
                             android:id="@+id/add_high_goal_button" />
 
                         <Button
-                            android:layout_height="36dp"
-                            android:layout_width="36dp"
+                            android:layout_height="48dp"
+                            android:layout_width="48dp"
                             android:background="@drawable/ic_remove_circle"
                             android:layout_marginStart="48dp"
                             android:layout_marginEnd="16dp"
@@ -309,64 +224,229 @@
 
                 </LinearLayout>
 
-                <LinearLayout
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/climbed_linear_layout"
+                    android:layout_below="@id/whole_list_linear_layout"
                     android:background="@color/gray"
+                    android:layout_marginTop="12dp"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:hint="Notes"
+                    android:elevation="4dp"
+                    android:textColorHint="@color/lightGray"
+                    android:paddingStart="12dp"
+                    android:textColor="@color/white"
+                    android:maxHeight="70dp"
+                    android:scrollIndicators="right"
+                    android:id="@+id/notes_edit_text" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/climbed_linear_layout"
                     android:padding="4dp"
                     android:elevation="20dp"
-                    android:layout_marginTop="12dp">
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="72dp">
 
                     <CheckBox
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/climbed_checkbox"
-                        android:buttonTint="@color/lightGray"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="8dp"/>
+                        android:text="Climbed"
+                        android:buttonTint="@color/white"
+                        android:textColor="@color/white"
+                        android:scaleX="1.2"
+                        android:scaleY="1.2"
+                        android:paddingEnd="24dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="32dp"
+                        android:textSize="16sp"/>
 
-                    <TextView
+                    <CheckBox
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Climbed"
-                        android:textSize="36sp"
-                        android:textColor="@color/lightGray"
-                        android:alpha="0.75"
-                        android:padding="8dp"
-                        android:layout_marginStart="4dp"/>
+                        android:id="@+id/human_player_checkbox"
+                        android:text="Garbage Human Player"
+                        android:buttonTint="@color/white"
+                        android:textColor="@color/white"
+                        android:scaleX="1.2"
+                        android:scaleY="1.2"
+                        android:paddingEnd="24dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginStart="16dp"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/end_match_button"
+                    android:text="End Match"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:textColor="@color/white"
+                    android:layout_below="@id/climbed_linear_layout"
+                    android:layout_marginTop="16dp"
+                    android:layout_centerHorizontal="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/radio_checkbox_linear_layout"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true">
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/alliance_button_linear_layout"
+                    android:layout_weight="0.16"
+                    android:padding="8dp"
+                    android:layout_marginEnd="100dp"
+                    android:layout_marginTop="16dp">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/blue_alliance_button"
+                        android:text="Blue"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:scaleX="1.2"
+                        android:scaleY="1.2"
+                        android:paddingEnd="10dp"
+                        android:layout_marginTop="4dp"
+                        android:textSize="16sp"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/red_alliance_button"
+                        android:text="Red"
+                        android:buttonTint="@color/white"
+                        android:textColor="@color/white"
+                        android:scaleX="1.2"
+                        android:scaleY="1.2"
+                        android:paddingEnd="10dp"
+                        android:layout_marginTop="4dp"
+                        android:textSize="16sp"/>
+
+                </RadioGroup>
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/autonomous_position_button_linear_layout"
+                    android:layout_weight="0.14"
+                    android:padding="8dp"
+                    android:layout_marginEnd="100dp">
+
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/left_position_button"
+                        android:text="Left"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:scaleX="1.2"
+                        android:scaleY="1.2"
+                        android:paddingEnd="10dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginStart="8dp"
+                        android:textSize="16sp"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/center_position_button"
+                        android:text="Center"
+                        android:buttonTint="@color/white"
+                        android:textColor="@color/white"
+                        android:scaleX="1.2"
+                        android:scaleY="1.2"
+                        android:paddingEnd="10dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginStart="8dp"
+                        android:textSize="16sp"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/right_position_button"
+                        android:text="Right"
+                        android:buttonTint="@color/white"
+                        android:textColor="@color/white"
+                        android:scaleX="1.2"
+                        android:scaleY="1.2"
+                        android:paddingEnd="10dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginStart="8dp"
+                        android:textSize="16sp"/>
+
+                </RadioGroup>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:id="@+id/checkbox_linear_layout"
+                    android:layout_marginTop="8dp">
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/placed_gear_checkbox"
+                        android:text="Placed Gear"
+                        android:buttonTint="@color/white"
+                        android:textColor="@color/white"
+                        android:scaleX="1.2"
+                        android:scaleY="1.2"
+                        android:paddingEnd="16dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        android:textSize="16sp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/high_goal_checkbox"
+                        android:text="High Goal"
+                        android:buttonTint="@color/white"
+                        android:textColor="@color/white"
+                        android:scaleX="1.2"
+                        android:scaleY="1.2"
+                        android:paddingEnd="16dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginStart="6dp"
+                        android:textSize="16sp"/>
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/low_goal_checkbox"
+                        android:text="Low Goal"
+                        android:buttonTint="@color/white"
+                        android:textColor="@color/white"
+                        android:scaleX="1.2"
+                        android:scaleY="1.2"
+                        android:paddingEnd="16dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginStart="6dp"
+                        android:textSize="16sp"/>
 
                 </LinearLayout>
 
             </LinearLayout>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/whole_list_linear_layout"
-                android:background="@color/gray"
-                android:layout_marginTop="12dp"
-                android:paddingTop="16dp"
-                android:paddingBottom="16dp"
-                android:hint="Notes"
-                android:textColorHint="@color/lightGray"
-                android:paddingStart="12dp"
-                android:elevation="20dp"
-                android:textColor="@color/white"
-                android:maxHeight="70dp"
-                android:scrollIndicators="right"
-                android:id="@+id/notes_edit_text" />
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/end_match_button"
-                android:text="End Match"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:textColor="@color/white"
-                android:layout_below="@id/notes_edit_text"
-                android:layout_marginTop="16dp"
-                android:layout_centerHorizontal="true" />
 
         </RelativeLayout>
 

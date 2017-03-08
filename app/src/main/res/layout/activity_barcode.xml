@@ -17,5 +17,17 @@
         android:id="@+id/QR_code_image_view"
         android:layout_centerInParent="true"/>
 
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="36dp"
+        android:text="START NEW MATCH"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimaryDark"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="32dp"
+        android:id="@+id/start_new_match_button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"/>
 
 </RelativeLayout>

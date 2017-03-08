@@ -1,9 +1,12 @@
 package com.example.tejpatel.scouting;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -12,10 +15,12 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
+import static android.R.attr.data;
+
 public class BarcodeActivity extends AppCompatActivity {
 
     private Context context;
-    public final static int QRcodeWidth = 500 ;
+    public final static int QRcodeWidth = 500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +28,16 @@ public class BarcodeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_barcode);
 
         context = this;
+
+        Button startNewMatchButton = (Button) findViewById(R.id.start_new_match_button);
+
+        startNewMatchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent refreshIntent = new Intent(context, MatchInfoActivity.class);
+                startActivity(refreshIntent);
+            }
+        });
 
         Bundle bundle = getIntent().getExtras();
         String data = bundle.getString("DATA");

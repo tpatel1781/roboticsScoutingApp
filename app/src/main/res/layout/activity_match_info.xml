@@ -36,7 +36,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:id="@+id/robot_number_edit_text"
-            android:hint="Robot Number"
+            android:hint="Team Number"
             app:met_floatingLabel="highlight"
             app:met_baseColor="@color/gray"
             app:met_primaryColor="@color/white"
